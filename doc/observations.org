@@ -1,0 +1,14 @@
+* Thoughts on when to use and when not
+- when you TDD interactions between systems use unit tests to drive that
+- when you start noticing invariants, define properties for them, and write property tests
+- property based testing is very helpful when edge cases are hard to find or there is so many of them that programmer can easily miss one
+
+* Useful Resources:
+http://thinkrelevance.com/blog/2013/11/26/better-than-unit-tests
+- Automated Contract Testing is different from property-based testing
+
+http://www.erikschierboom.com/2016/02/22/property-based-testing/
+- when you have multiple examples that test the same thing, but don't force a code change -- just confirm it,
+you can use a table-driven test to clean it up.
+
+
