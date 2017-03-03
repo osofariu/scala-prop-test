@@ -1,19 +1,21 @@
 package diamond
 
 case class Diamond(c: Char) {
-  def rows : IndexedSeq[String] = c match {
-    case 'A' => IndexedSeq("A")
-    case char if char > 'A' && char <= 'Z' =>
+  def rows : List[String] = c match {
+    case char if char >= 'A' && char <= 'Z' =>
       val charRange = 'A' to char
-      val firstHalfRange = charRange.zipWithIndex.map((pair) => makeRow(pair._1, pair._2, charRange.length))
+      val firstHalfRange = charRange.zipWithIndex.map {
+        case (c: Char, index: Int) => makeRow(c, index, charRange.length)
+      }
       val secondHalfRange = firstHalfRange.reverse.tail
-      firstHalfRange union secondHalfRange
+      firstHalfRange union secondHalfRange toList
     case other => throw new IllegalArgumentException("Invalid character=(" + other + ")")
   }
 
   def makeRow(char: Char, index: Int, rangeLen: Int) : String = {
     val before_spacing = " " * (rangeLen - index - 1)
     val middle_spacing = " " * (index * 2 - 1)
+
     if (index == 0)
       before_spacing + char
     else
