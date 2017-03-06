@@ -26,3 +26,12 @@ List("aa", "b").reduce((a, b) => a + b)
 
 List('A', '-').mkString("")
 
+(20 to 0 by -1).mkString(",")
+
+
+//val expectedSpacesCounts = (0 to (10 * 2)) union ((10 * 2) - 1 to 0)
+  //.filter(count => count == 0 || count % 2 == 1)
+
+//      val indexesUp = 0 to (rows.length - 2).max(0)
+val indexesUp = 1 until 10 by 2
+val expectedSpacesCounts = indexesUp union indexesUp.reverse.tail
